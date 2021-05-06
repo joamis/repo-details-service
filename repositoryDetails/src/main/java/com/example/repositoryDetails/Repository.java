@@ -21,6 +21,14 @@ public class Repository {
 
     }
 
+    public Repository(String fullName, String description, String cloneUrl, String stars, String createdAt) {
+        this.fullName = fullName;
+        this.description = description;
+        this.cloneUrl = cloneUrl;
+        this.stars = stars;
+        this.createdAt = createdAt;
+    }
+
     public String getFullName() {
         return fullName;
     }
