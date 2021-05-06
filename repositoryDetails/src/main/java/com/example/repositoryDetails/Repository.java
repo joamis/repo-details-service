@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Repository {
-    private String name;
-    private String id;
-    @JsonProperty("clone_url")
-    private String cloneUrl;
+
     @JsonProperty("full_name")
     private String fullName;
+    private String description;
+    @JsonProperty("clone_url")
+    private String cloneUrl;
     @JsonProperty("stargazers_count")
     private String stars;
     @JsonProperty("created_at")
     private String createdAt;
-    private String description;
+
 
     public Repository() {
 
@@ -37,17 +37,28 @@ public class Repository {
         return description;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String getCloneUrl() {
         return cloneUrl;
     }
 
-    public String getId() {
-        return id;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCloneUrl(String cloneUrl) {
+        this.cloneUrl = cloneUrl;
+    }
+
+    public void setStars(String stars) {
+        this.stars = stars;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 }
 
