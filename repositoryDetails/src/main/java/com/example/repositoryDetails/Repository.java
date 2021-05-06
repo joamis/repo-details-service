@@ -12,7 +12,7 @@ public class Repository {
     @JsonProperty("clone_url")
     private String cloneUrl;
     @JsonProperty("stargazers_count")
-    private String stars;
+    private Long stars;
     @JsonProperty("created_at")
     private String createdAt;
 
@@ -21,9 +21,16 @@ public class Repository {
 
     }
 
-    public Repository(String fullName, String description, String cloneUrl, String stars, String createdAt) {
+    public Repository(String fullName, String description, String cloneUrl, Long stars, String createdAt) {
         this.fullName = fullName;
         this.description = description;
+        this.cloneUrl = cloneUrl;
+        this.stars = stars;
+        this.createdAt = createdAt;
+    }
+
+    public Repository(String fullName, String cloneUrl, Long stars, String createdAt) {
+        this.fullName = fullName;
         this.cloneUrl = cloneUrl;
         this.stars = stars;
         this.createdAt = createdAt;
@@ -33,7 +40,7 @@ public class Repository {
         return fullName;
     }
 
-    public String getStars() {
+    public Long getStars() {
         return stars;
     }
 
@@ -61,7 +68,7 @@ public class Repository {
         this.cloneUrl = cloneUrl;
     }
 
-    public void setStars(String stars) {
+    public void setStars(Long stars) {
         this.stars = stars;
     }
 
