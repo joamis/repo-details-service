@@ -15,22 +15,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(RepositoryController.class)
-public class WebLayerTests {
+public class HttpSuccessfulRequestTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @ParameterizedTest
     @MethodSource("provideTestData")
-    public void givenRepositoryURI_whenMockMVC_thenVerifyResponse(String uri, Repository repository) throws Exception {
+    public void givenExistingRepositoryURI_whenMockMVC_thenVerifyResponse(String uri, RepositoryModel repository) throws Exception {
         this.mockMvc.perform(get(uri))
-                .andDo(print()).andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.full_name").value(repository.getFullName()))
+                .andExpect(jsonPath("$.fullName").value(repository.getFullName()))
                 .andExpect(jsonPath("$.description").value(repository.getDescription()))
-                .andExpect(jsonPath("$.clone_url").value(repository.getCloneUrl()))
-                .andExpect(jsonPath("$.stargazers_count").value(repository.getStars()))
-                .andExpect(jsonPath("$.created_at").value(repository.getCreatedAt()));
+                .andExpect(jsonPath("$.cloneUrl").value(repository.getCloneUrl()))
+                .andExpect(jsonPath("$.createdAt").value(repository.getCreatedAt()));
     }
 
     private static Stream<Arguments> provideTestData() {

@@ -11,12 +11,14 @@ import org.springframework.web.client.RestTemplate;
 public class RepositoryController {
 
     private static final String GET_REPOSITORY_DETAILS_URL = "https://api.github.com/repos/";
+
     @Autowired
-    private RestTemplate restTemplate;
+    private RestTemplate restTemplateWithErrorHandler;
 
     @GetMapping("/repositories/{owner}/{repository-name}")
-    public Repository getRepositoryDetails(@PathVariable("owner") String ownerName, @PathVariable("repository-name") String repositoryName) {
+    public RepositoryModel getRepositoryDetails(@PathVariable("owner") String ownerName, @PathVariable("repository-name") String repositoryName) {
         String url = GET_REPOSITORY_DETAILS_URL + ownerName + '/' + repositoryName;
-        return restTemplate.getForObject(url, Repository.class);
+        GithubRepository githubRepository = restTemplateWithErrorHandler.getForObject(url, GithubRepository.class);
+        return new RepositoryModel(githubRepository.getFullName(), githubRepository.getDescription(), githubRepository.getCloneUrl(), githubRepository.getStars(), githubRepository.getCreatedAt());
     }
 }

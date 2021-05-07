@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Repository {
+public class GithubRepository {
 
     @JsonProperty("full_name")
     private String fullName;
@@ -16,24 +16,7 @@ public class Repository {
     @JsonProperty("created_at")
     private String createdAt;
 
-
-    public Repository() {
-
-    }
-
-    public Repository(String fullName, String description, String cloneUrl, Long stars, String createdAt) {
-        this.fullName = fullName;
-        this.description = description;
-        this.cloneUrl = cloneUrl;
-        this.stars = stars;
-        this.createdAt = createdAt;
-    }
-
-    public Repository(String fullName, String cloneUrl, Long stars, String createdAt) {
-        this.fullName = fullName;
-        this.cloneUrl = cloneUrl;
-        this.stars = stars;
-        this.createdAt = createdAt;
+    public GithubRepository() {
     }
 
     public String getFullName() {
