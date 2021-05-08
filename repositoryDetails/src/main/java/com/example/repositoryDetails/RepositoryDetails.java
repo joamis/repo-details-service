@@ -2,7 +2,7 @@ package com.example.repositoryDetails;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RepositoryModel {
+public class RepositoryDetails {
 
     @JsonProperty("fullName")
     private String fullName;
@@ -15,21 +15,24 @@ public class RepositoryModel {
     @JsonProperty("createdAt")
     private String createdAt;
 
+    public RepositoryDetails() {
 
-    public RepositoryModel(String fullName, String description, String cloneUrl, String createdAt) {
+    }
+
+    public RepositoryDetails(String fullName, String description, String cloneUrl, String createdAt) {
         this.fullName = fullName;
         this.description = description;
         this.cloneUrl = cloneUrl;
         this.createdAt = createdAt;
     }
 
-    public RepositoryModel(String fullName, String cloneUrl, String createdAt) {
+    public RepositoryDetails(String fullName, String cloneUrl, String createdAt) {
         this.fullName = fullName;
         this.cloneUrl = cloneUrl;
         this.createdAt = createdAt;
     }
 
-    public RepositoryModel(String fullName, String description, String cloneUrl, Long stars, String createdAt) {
+    public RepositoryDetails(String fullName, String description, String cloneUrl, Long stars, String createdAt) {
         this.fullName = fullName;
         this.description = description;
         this.cloneUrl = cloneUrl;

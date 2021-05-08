@@ -1,5 +1,6 @@
 package com.example.repositoryDetails;
 
+import com.example.repositoryDetails.exception.RestTemplateErrorHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,5 +20,4 @@ public class RepositoryDetailsApplication {
                 .errorHandler(new RestTemplateErrorHandler())
                 .build();
     }
-
 }

@@ -22,7 +22,7 @@ public class HttpSuccessfulRequestTest {
 
     @ParameterizedTest
     @MethodSource("provideTestData")
-    public void givenExistingRepositoryURI_whenMockMVC_thenVerifyResponse(String uri, RepositoryModel repository) throws Exception {
+    public void givenExistingRepositoryURI_whenMockMVC_thenVerifyResponse(String uri, RepositoryDetails repository) throws Exception {
         this.mockMvc.perform(get(uri))
                 .andDo(print())
                 .andExpect(status().isOk())

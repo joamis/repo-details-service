@@ -1,6 +1,5 @@
-package com.example.repositoryDetails;
+package com.example.repositoryDetails.exception;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.ResponseErrorHandler;
@@ -15,11 +14,7 @@ public class RestTemplateErrorHandler implements ResponseErrorHandler {
     }
 
     @Override
-    public void handleError(ClientHttpResponse response) throws IOException {
-
-        if (response.getStatusCode().series() == HttpStatus.Series.SERVER_ERROR || response.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR) {
-            throw new RepositoryNotFoundException();
-        }
+    public void handleError(ClientHttpResponse response) {
+        throw new ApiRequestException("Repository does not exist");
     }
-
 }
